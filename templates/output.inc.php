@@ -1,6 +1,7 @@
-<pre>
+<ul>
 <?php 
-    print_r ($christianName);
+    foreach ($names as $name) {
+        echo "<li>" . $name . "</li>";
+    }
 ?>
-Number = <?php echo $number; ?>
-</pre>
+</ul>

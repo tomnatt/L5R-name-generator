@@ -6,7 +6,7 @@ ini_set('display_errors', True);
 set_include_path(get_include_path() . PATH_SEPARATOR . "./templates/");
 
 // how many?
-$number = 0;
+$number = 20;
 if (isset($_GET["number"])) {
     
     // check it is a number
@@ -20,20 +20,31 @@ if (isset($_GET["number"])) {
     }
 }
 
-// load name files
-$familyNames = explode("\n", file_get_contents("./data/family_names.txt"));
-// remove the comment line
-array_shift($familyNames);
+// load name files - only do this if we are generating anything
+if ($number > 0) {
 
-$file = "./data/male_names.txt";
-if ($_GET["gender"] == "female") {
-    $file = "./data/female_names.txt";
+    $familyNames = explode("\n", file_get_contents("./data/family_names.txt"));
+    // remove the comment line
+    array_shift($familyNames);
+
+    $file = "./data/male_names.txt";
+    if (isset($_GET["gender"]) && $_GET["gender"] == "female") {
+        $file = "./data/female_names.txt";
+    }
+    $givenNames = explode("\n", file_get_contents($file));
+    // remove the comment line
+    array_shift($givenNames);
+
+    // generate names
+    $names = array();
+    $i = 0;
+    while ($i < $number) {
+        $fn = $familyNames[rand(0, count($familyNames) - 1)];
+        $gn = $givenNames[rand(0, count($givenNames) - 1)];
+        $names[] = $fn . " " . $gn;
+        $i++;
+    }
 }
-$christianName = explode("\n", file_get_contents($file));
-// remove the comment line
-array_shift($christianName);
-
-// generate a name
 
 // output
 include_once ("header.inc.php");
