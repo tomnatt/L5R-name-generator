@@ -6,3 +6,7 @@ label {
     display: block;
     margin-bottom: 5px;
 }
+
+.help {
+    font-size: small;
+}

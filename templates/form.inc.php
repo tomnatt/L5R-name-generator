@@ -2,6 +2,7 @@
     <label>
         Number: 
         <input type="text" id="number" name="number" <?php echo (isset($_GET["number"]) ? 'value="'.$_GET["number"].'" ' : ""); ?>/>
+        <span class="help">(1-20, please)</span>
     </label>
     <label>
         Gender: 
