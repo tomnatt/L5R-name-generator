@@ -1,6 +1,6 @@
 <pre>
 <?php 
-    print_r ($_GET);
+    print_r ($christianName);
 ?>
 Number = <?php echo $number; ?>
 </pre>

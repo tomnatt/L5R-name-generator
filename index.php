@@ -5,7 +5,7 @@ ini_set('display_errors', True);
 
 set_include_path(get_include_path() . PATH_SEPARATOR . "./templates/");
 
-// processing
+// how many?
 $number = 0;
 if (isset($_GET["number"])) {
     
@@ -19,6 +19,21 @@ if (isset($_GET["number"])) {
         }
     }
 }
+
+// load name files
+$familyNames = explode("\n", file_get_contents("./data/family_names.txt"));
+// remove the comment line
+array_shift($familyNames);
+
+$file = "./data/male_names.txt";
+if ($_GET["gender"] == "female") {
+    $file = "./data/female_names.txt";
+}
+$christianName = explode("\n", file_get_contents($file));
+// remove the comment line
+array_shift($christianName);
+
+// generate a name
 
 // output
 include_once ("header.inc.php");
