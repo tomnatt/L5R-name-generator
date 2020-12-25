@@ -8,11 +8,11 @@ set_include_path(get_include_path() . PATH_SEPARATOR . "./templates/");
 // how many?
 $number = 20;
 if (isset($_GET["number"])) {
-    
+
     // check it is a number
     if (is_int(intval($_GET["number"]))) {
         $number = intval($_GET["number"]);
-        
+
         // check it is a number 1-20
         if (!($number > 0 && $number <= 20)) {
             $number = 0;
