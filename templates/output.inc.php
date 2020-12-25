@@ -1,5 +1,5 @@
 <ul>
-<?php 
+<?php
     foreach ($names as $name) {
         echo "<li>" . $name . "</li>";
     }
